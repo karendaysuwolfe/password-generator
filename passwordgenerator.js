@@ -1,4 +1,10 @@
-function generatePassword(length = 6) {
+function generatePassword() {
+  // Get the password length from the user
+  let length = prompt('Enter the password length (minimum 6 characters):');
+  // Ensure that the password length is at least 6 characters
+  if (length < 6) {
+    length = 6;
+  }
   // Get all the printable ASCII characters
   const characters = `abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&'()*+,-./:;<=>?@[\\]^_\`{|}~`;
   // Use the Math.random() function to generate a password
@@ -20,6 +26,6 @@ function generatePassword(length = 6) {
   return password;
 }
 
-// Generate a random password with a length of 8 characters
-const password = generatePassword(8);
+// Generate a random password with a length specified by the user
+const password = generatePassword();
 console.log(password);
