@@ -1,6 +1,4 @@
-function generatePassword() {
-  // Get the password length from the user
-  let length = prompt('Enter the password length (minimum 6 characters):');
+function generatePassword(length) {
   // Ensure that the password length is at least 6 characters
   if (length < 6) {
     length = 6;
@@ -26,6 +24,16 @@ function generatePassword() {
   return password;
 }
 
-// Generate a random password with a length specified by the user
-const password = generatePassword();
-console.log(password);
+function generateAndDisplayPassword() {
+  const passwordLengthInput = document.getElementById('password-length');
+  const passwordTextArea = document.getElementById('password');
+
+  // Get the password length from the input element
+  const length = parseInt(passwordLengthInput.value);
+
+  // Generate a password using the generatePassword function
+  const password = generatePassword(length);
+
+  // Display the password in the text area
+  passwordTextArea.value = password;
+}
