@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Password Generator</title>
-    <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-    <div class="container">
-      <script src="passwordgenerator.js"></script>
-      <button onclick="generatePassword()">Generate Password</button>
-      <p id="password"></p>
-    </div>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <title>Password Generator</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Password Generator</h1>
+    <label for="password-length">Password length:</label>
+    <input type="number" id="password-length" value="12" min="6" max="100">
+    <button onclick="generateAndDisplayPassword()">Generate Password</button>
+    <br>
+    <br>
+    <label for="password">Password:</label>
+    <textarea id="password" rows="3" readonly></textarea>
+  </div>
+  <script src="passwordgenerator.js"></script>
+</body>
 </html>
