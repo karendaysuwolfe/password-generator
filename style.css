@@ -5,3 +5,7 @@
   align-items: center;
   height: 100vh;
 }
+
+body {
+  background-color: #f1f1f1;
+}
