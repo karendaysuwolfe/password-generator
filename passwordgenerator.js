@@ -1,7 +1,10 @@
-function generatePassword(length) {
+function generatePassword() {
+  // Get the password length from the user
+  let length = prompt('Enter the password length (minimum 6 characters):');
   // Ensure that the password length is at least 6 characters
   if (length < 6) {
-    length = 6;
+    alert('Password length must be at least 6 characters.');
+    return '';
   }
   // Get all the printable ASCII characters
   const characters = `abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&'()*+,-./:;<=>?@[\\]^_\`{|}~`;
@@ -28,12 +31,8 @@ function generateAndDisplayPassword() {
   const passwordLengthInput = document.getElementById('password-length');
   const passwordTextArea = document.getElementById('password');
 
-  // Get the password length from the input element
-  const length = parseInt(passwordLengthInput.value);
+  const passwordLength = passwordLengthInput.value;
+  const password = generatePassword(passwordLength);
 
-  // Generate a password using the generatePassword function
-  const password = generatePassword(length);
-
-  // Display the password in the text area
   passwordTextArea.value = password;
 }
