@@ -9,8 +9,30 @@ function generatePassword() {
   }
   
   // Get all the printable ASCII characters
-  const characters = `abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&'()*+,-./:;<=>?@[\\]^_\`{|}~`;
-
+  let characters = `abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&'()*+,-./:;<=>?@[\\]^_\`{|}~`;
+  
+  // Get the selected options
+  const optionCheckboxes = document.getElementsByClassName('option');
+  const easyToReadCheckbox = optionCheckboxes[0];
+  const easyToSayCheckbox = optionCheckboxes[1];
+  const allCharactersCheckbox = optionCheckboxes[2];
+  
+  // Determine which options are selected
+  let easyToRead = easyToReadCheckbox.checked;
+  let easyToSay = easyToSayCheckbox.checked;
+  let allCharacters = allCharactersCheckbox.checked;
+  
+  // Apply the selected options to the character set
+  if (easyToRead) {
+    characters = characters.replace(/[ilo]/gi, '');
+  }
+  if (easyToSay) {
+    characters = characters.replace(/[0123456789!#$%&'()*+,-.:;<=>?@[\\\]^_`{|}~]/g, '');
+  }
+  if (!allCharacters) {
+    characters = characters.replace(/[^A-Za-z0-9]/g, '');
+  }
+  
   // Use the Math.random() function to generate a password
   let password = '';
   for (let i = 0; i < length; i++) {
@@ -30,13 +52,23 @@ function generatePassword() {
     password = password.replace(/[!#$%&'()*+,-./:;<=>?@[\\]^_\`{|}~]/, '!');
   }
   
-  // Ensure that the password doesn't contain any spaces
-  if (password.indexOf(' ') !== -1) {
-    generatePassword();
-    return;
-  }
-  
   // Display the password on the page
   const passwordDisplay = document.getElementById('password');
   passwordDisplay.textContent = password;
+}
+
+function copyToClipboard() {
+  const passwordDisplay = document.getElementById('password');
+  passwordDisplay.select();
+  document.execCommand('copy');
+  alert('Password copied to clipboard!');
+}
+
+function updateCheckboxes(checkbox) {
+  const optionCheckboxes = document.getElementsByClassName('option');
+  for (let i = 0; i < optionCheckboxes.length; i++) {
+    if (optionCheckboxes[i] !== checkbox) {
+      optionCheckboxes[i].checked = false;
+    }
+  }
 }
