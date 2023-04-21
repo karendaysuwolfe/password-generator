@@ -13,9 +13,10 @@
         <label for="password-length">Password Length:</label>
         <input type="number" id="password-length" name="password-length" min="6" max="64" value="12">
         <br><br>
-        <label><input type="checkbox" class="option" name="easy-to-read">Easy to read</label>
-        <label><input type="checkbox" class="option" name="easy-to-say">Easy to say</label>
-        <label><input type="checkbox" class="option" name="all-characters">All Characters</label>
+        <label><input type="checkbox" id="uppercase" name="uppercase">Uppercase</label>
+        <label><input type="checkbox" id="lowercase" name="lowercase">Lowercase</label>
+        <label><input type="checkbox" id="numbers" name="numbers">Numbers</label>
+        <label><input type="checkbox" id="special-characters" name="special-characters">Special Characters</label>
         <br><br>
         <button type="button" onclick="generatePassword()">Generate Password</button>
       </form>
@@ -23,7 +24,5 @@
       <textarea id="password" rows="3" cols="50" readonly></textarea>
     </div>
     <footer>&copy; 2023 Karendaysu Wolfe | <a href="https://atwolfe.net/index.html">Return to Main Page</a> | <a href="https://atwolfe.net/projects.html">Return to Project Page</a></footer>
-
-
   </body>
 </html>
